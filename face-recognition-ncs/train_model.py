@@ -35,7 +35,7 @@ print("[INFO] Training the model...")
 params = {"C": [0.001, 0.01, 0.1, 1.0, 10.0, 100.0, 1000.0], "gamma": [1e-1, 1e-2, 1e-3, 1e-4, 1e-5]}
 model = GridSearchCV(SVC(kernel="rbf", gamma="auto", probability=True), params, cv=3, n_jobs=-1)
 model.fit(data["embeddings"], labels)
-print("[INFO] best hyperparameters: {}".format(model.best_params_))
+print("[INFO] Best hyperparameters: {}".format(model.best_params_))
 
 # Write the face recognition model to disk
 f = open(args["recognizer"], "wb")

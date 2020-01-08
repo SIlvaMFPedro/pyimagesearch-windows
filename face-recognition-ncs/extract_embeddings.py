@@ -51,7 +51,7 @@ knownNames = []
 total = 0
 
 # Loop over the image paths
-for (i, imgPath) in imagePaths:
+for (i, imgPath) in enumerate(imagePaths):
     # Extract the person name from the image path
     print("[INFO] Processing image {}/{}".format(i + 1, len(imagePaths)))
     name = imgPath.split(os.path.sep)[-2]
@@ -60,8 +60,11 @@ for (i, imgPath) in imagePaths:
     img = cv2.imread(imgPath)
     img = imutils.resize(img, width=600)
     (h, w) = img.shape[:2]
+    print("H: ", h)
+    print("W: ", w)
     # Construct the blob from the image
-    imgBlob = cv2.dnn.blobFromImage(cv2.resize(img, (300, 300)), (104.0, 177.0, 123.0), swapRB=False, crop=False)
+    resizedImg = cv2.resize(img, (300, 300))
+    imgBlob = cv2.dnn.blobFromImage(resizedImg, 1.0, (300, 300), (104.0, 177.0, 123.0), swapRB=False, crop=False)
     # Apply the OpenCV's deep learning-based face detector to localize faces in the input image
     detector.setInput(imgBlob)
     detections = detector.forward()
