@@ -95,6 +95,7 @@ for (i, imgPath) in enumerate(imagePaths):
             knownNames.append(name)
             knownEmbeddings.append(vec.flatten())
             total += 1
+
 # Dump the facial embeddings + names to the disk
 print("[INFO] Serializing {} encodings...".format(total))
 data = {"Embeddings": knownEmbeddings, "Names": knownNames}
