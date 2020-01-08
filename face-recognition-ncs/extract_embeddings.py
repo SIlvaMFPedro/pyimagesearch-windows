@@ -77,7 +77,7 @@ for (i, imgPath) in enumerate(imagePaths):
         # Ensure that the detection with the largest probability also means the minimum probability test (thus helping
         # filter out weak detection).
         if confidence > args['confidence']:
-            # Compute the (x, y) coordinatesof the bounding box for the face
+            # Compute the (x, y) coordinates of the bounding box for the face
             box = detections[0, 0, j, 3:7] * np.array([w, h, w, h])
             (startX, startY, endX, endY) = box.astype("int")
             # Extract the face ROI and grab the ROI dimensions
